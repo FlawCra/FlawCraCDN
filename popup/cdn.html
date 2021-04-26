@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>FlawCra CDN - File Upload</title>
+  <script src='jquery.min.js'></script>
+  <link rel='stylesheet' href='materialize.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link rel="stylesheet" href="cdn.css">
+<link href="dark.css" rel="stylesheet">
+<script src="sweetalert2.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="row">
+    <div class="col s12">
+      <!-- Uploader Dropzone -->
+      <div id="zdrop" class="fileuploader ">
+        <div id="upload-label" style="width: 200px;">
+          <i class="material-icons">cloud_upload</i>
+          <span class="title">Drag your Files here</span>
+          <span>or click to upload.<span/>
+        </div>
+      </div>
+      <!-- Preview collection of uploaded documents -->
+      <div class="preview-container">
+        <div class="header">
+          <span>Uploaded Files</span> 
+          <i id="controller" class="material-icons">keyboard_arrow_down</i>
+        </div>
+        <div class="collection card" id="previews">
+          <div class="collection-item clearhack valign-wrapper item-template" id="zdrop-template">
+            <div class="left pv zdrop-info" data-dz-thumbnail>
+              <div>
+                <span data-dz-name></span> <span data-dz-size></span>
+              </div>
+              <div class="progress">
+                <div class="determinate" style="width:0" data-dz-uploadprogress></div>
+              </div>
+              <div class="dz-error-message"><span data-dz-errormessage></span></div>
+            </div>
+
+            <div class="secondary-content actions">
+              <a href="#!" data-dz-remove class="btn-floating ph red white-text waves-effect waves-light"><i class="material-icons white-text">clear</i></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- partial -->
+  <script src='materialize.min.js'></script>
+  <script src='dropzone.js'></script>
+  <script  src="cdn.js"></script>
+
+</body>
+</html>

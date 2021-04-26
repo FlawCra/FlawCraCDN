@@ -1,0 +1,35 @@
+{
+
+  "manifest_version": 2,
+  "name": "FlawCra CDN",
+  "version": "1.0",
+
+  "description": "Extension to upload files on the fly. Click the icon to upload a file to FlawCra CDN.",
+  "homepage_url": "https://flawcra.cc/cdn",
+  "icons": {
+    "48": "icons/flawcra-48.png",
+    "96": "icons/flawcra-96.png"
+  }, 
+
+  "permissions": [
+    "clipboardWrite",
+    "webRequest"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "browser_action": {
+    "default_icon": "icons/flawcra-32.png"
+  },
+
+  "web_accessible_resources": [
+    "sounds/error.mp3",
+    "sounds/done.mp3",
+    "popup/cdn.css",
+    "popup/cdn.html",
+    "popup/cdn.js"
+  ]
+
+}
