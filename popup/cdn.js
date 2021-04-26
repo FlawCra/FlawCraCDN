@@ -54,25 +54,38 @@ $(document).ready(function(){
 					});
 
 					zdrop.on("complete", function (data) {
+						
 						if(data.status == "success") {
 							var json = JSON.parse(data.xhr.response);
 							if(json.success == true) {
 								data.previewElement.children[1].innerHTML = "<a href=\"#!\" data-url=\""+json.response+"\" data-dz-remove=\"\" class=\"btn-floating ph green white-text waves-effect waves-light\"><i class=\"material-icons white-text\">cloud_done</i></a><a href=\"#!\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">clear</i></a>";
 								data.previewElement.children[1].children[0].addEventListener("click", function () { window[`copyLnk`](this); });
 								data.previewElement.children[1].children[1].addEventListener("click", function () { this.parentElement.parentElement.remove(); });
-								new Audio(browser.extension.getURL("sounds/done.mp3")).play();
+								if(typeof browser != 'undefined') {
+									new Audio(browser.extension.getURL("sounds/done.mp3")).play();
+								} else {
+									new Audio(chrome.runtime.getURL("sounds/done.mp3")).play();
+								}
 							} else {
 								data.previewElement.children[1].innerHTML = "<a href=\"#!\" data-url=\""+json.error+"\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">error</i></a><a href=\"#!\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">clear</i></a>";
 								data.previewElement.children[1].children[0].addEventListener("click", function () { window[`copyLnk`](this); });
 								data.previewElement.children[1].children[1].addEventListener("click", function () { this.parentElement.parentElement.remove(); });
-								new Audio(browser.extension.getURL("sounds/error.mp3")).play();
+								if(typeof browser != 'undefined') {
+									new Audio(browser.extension.getURL("sounds/error.mp3")).play();
+								} else {
+									new Audio(chrome.runtime.getURL("sounds/error.mp3")).play();
+								}
 							}
 							
 						} else {
 							data.previewElement.children[1].innerHTML = "<a href=\"#!\" data-url=\"javascript:void;\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">error</i></a><a href=\"#!\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">clear</i></a>";
 							data.previewElement.children[1].children[0].addEventListener("click", function () { this.parentElement.parentElement.remove(); });
 							data.previewElement.children[1].children[1].addEventListener("click", function () { this.parentElement.parentElement.remove(); });
-							new Audio(browser.extension.getURL("sounds/error.mp3")).play();
+							if(typeof browser != 'undefined') {
+								new Audio(browser.extension.getURL("sounds/error.mp3")).play();
+							} else {
+								new Audio(chrome.runtime.getURL("sounds/error.mp3")).play();
+							}
 						}
 						window["completed"] = data;
 					});
