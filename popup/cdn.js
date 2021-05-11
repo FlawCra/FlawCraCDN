@@ -57,12 +57,12 @@ $(document).ready(function(){
 						if(data.status == "success") {
 							var json = JSON.parse(data.xhr.response);
 							if(json.success == true) {
-								data.previewElement.children[1].innerHTML = "<a href=\"#!\" data-url=\""+json.response+"\" data-dz-remove=\"\" class=\"btn-floating ph green white-text waves-effect waves-light\"><i class=\"material-icons white-text\">cloud_done</i></a><a href=\"#!\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">clear</i></a>";
+								data.previewElement.children[1].innerHTML = "<a href=\"#!\" data-url=\""+json.response.escape()+"\" data-dz-remove=\"\" class=\"btn-floating ph green white-text waves-effect waves-light\"><i class=\"material-icons white-text\">cloud_done</i></a><a href=\"#!\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">clear</i></a>";
 								data.previewElement.children[1].children[0].addEventListener("click", function () { window[`copyLnk`](this); });
 								data.previewElement.children[1].children[1].addEventListener("click", function () { this.parentElement.parentElement.remove(); });
 								new Audio(browser.extension.getURL("sounds/done.mp3")).play();
 							} else {
-								data.previewElement.children[1].innerHTML = "<a href=\"#!\" data-url=\""+json.error+"\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">error</i></a><a href=\"#!\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">clear</i></a>";
+								data.previewElement.children[1].innerHTML = "<a href=\"#!\" data-url=\""+json.error.escape()+"\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">error</i></a><a href=\"#!\" data-dz-remove=\"\" class=\"btn-floating ph red white-text waves-effect waves-light\"><i class=\"material-icons white-text\">clear</i></a>";
 								data.previewElement.children[1].children[0].addEventListener("click", function () { window[`copyLnk`](this); });
 								data.previewElement.children[1].children[1].addEventListener("click", function () { this.parentElement.parentElement.remove(); });
 								new Audio(browser.extension.getURL("sounds/error.mp3")).play();
